@@ -1,12 +1,15 @@
-# Prediction vs. Inference: does the best model depend on the goal?
+# ADEC7430.01 Fall 2026 ML/AI Algorithms I Coursework
 
-For Module 02, I wanted to see whether the module's idea, that prediction and inference can disagree, also applies to choosing between model types, not just to omitting a variable.
+Assignments for ADEC7430.01 Fall 2026 ML/AI Algorithms I at Boston College, Fall 2026.
 
-I simulated house prices with a known square footage effect (0.1 per sq ft) and made the effect of age curved instead of linear. Then I fit OLS and a k-nearest neighbors model (both written in numpy, no sklearn) and scored them two ways: test RMSE for prediction, and how close each model's estimate of the square footage effect was to 0.1 for inference. For KNN I estimated the effect by adding 100 sq ft to every test house and averaging the change in predicted price.
+## Assignments
 
-| Model | Test RMSE | Sq ft effect (true = 0.1) |
-|-------|-----------|---------------------------|
-| OLS   | 16.99     | 0.101                     |
-| KNN   | 8.18      | 0.096                     |
+### HW1: Prediction vs. Inference
+Simulated house prices with a curved age effect and compared OLS and KNN, both written in numpy. KNN predicted much better (test RMSE 8.18 vs. 16.99), but OLS estimated the square footage effect more accurately. The best model depends on whether the goal is prediction or inference.
 
-KNN predicts much better because it can follow the curve in age. OLS gets the square footage effect a little closer to the truth, and it gives me that effect as a single coefficient, while KNN has no coefficient at all. The inference gap is small here, so the main difference is that OLS is easy to interpret and KNN isn't.
+Notebook: [WegrzynekHW1.ipynb](WegrzynekHW1.ipynb)
+
+### HW2: Sampling Variability
+Generated 50 datasets from the same process using make_regression() and fit a linear regression to each. The real features were estimated consistently, but the noise features ranged from about -4 to 5 and sometimes flipped sign. Test MSE ranged from about 255 to 700. Sampling randomness alone can make irrelevant features look meaningful.
+
+Notebook: [WegrzynekHW2.ipynb](WegrzynekHW2.ipynb)
